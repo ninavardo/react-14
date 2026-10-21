@@ -2,23 +2,13 @@ import ProductsList from "../components/ProductsList";
 
 function Home() {
   return (
-    <>
-      <section className="mx-auto max-w-7xl px-6 pb-8 pt-12">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-gray-500">
-          Thoughtfully selected
-        </p>
-
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-          Everyday essentials.
-        </h1>
-
-        <p className="mt-3 max-w-xl text-gray-600">
-          Discover simple, functional pieces designed for everyday life.
-        </p>
-      </section>
-
+    <div className="mx-auto max-w-5xl px-4 py-6">
+      <h1 className="mb-1 text-3xl">Welcome to Mini Market</h1>
+      <p className="mb-6 text-gray-700">
+        Browse the products below and add the ones you want.
+      </p>
       <ProductsList />
-    </>
+    </div>
   );
 }
 

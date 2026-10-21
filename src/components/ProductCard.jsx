@@ -1,36 +1,29 @@
-import { ShoppingCart } from "lucide-react";
+import { useCart } from "../context/useCart";
 
 function ProductCard({ product }) {
+  const { addToCart } = useCart();
+
   return (
-    <article className="group overflow-hidden rounded-xl border border-gray-200 bg-white">
-      <div className="aspect-square overflow-hidden bg-gray-100">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-        />
-      </div>
+    <div className="border border-gray-300 bg-white p-3 shadow">
+      <img
+        src={product.image}
+        alt={product.title}
+        className="h-44 w-full object-cover"
+      />
 
-      <div className="p-4">
-        <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
-          {product.category}
-        </p>
+      <p className="mt-2 text-xs text-blue-700">{product.category}</p>
+      <h3 className="mt-1 text-lg">{product.title}</h3>
+      <p className="mt-1 font-bold text-green-700">
+        ${product.price.toFixed(2)}
+      </p>
 
-        <div className="mt-2 flex items-start justify-between gap-3">
-          <h3 className="font-semibold text-gray-900">{product.title}</h3>
-
-          <p className="shrink-0 font-semibold text-gray-900">
-            ${product.price.toFixed(2)}
-          </p>
-        </div>
-
-        <button className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-gray-700">
-
-          <ShoppingCart size={17} />
-          Add to cart
-        </button>
-      </div>
-    </article>
+      <button
+        onClick={() => addToCart(product)}
+        className="mt-3 w-full bg-green-600 py-2 text-white hover:bg-green-700"
+      >
+        Add to cart
+      </button>
+    </div>
   );
 }
 

@@ -1,25 +1,20 @@
-import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router";
 
-const EmptyCartState = () => {
+function EmptyCartState() {
   return (
-    <div className="mt-10 rounded-xl border border-gray-200 bg-white px-6 py-16 text-center">
-      <ShoppingCart className="mx-auto text-gray-400" size={40} />
-
-      <h2 className="mt-4 text-lg font-semibold">Your cart is empty</h2>
-
-      <p className="mt-2 text-sm text-gray-500">
-        Add some products to get started.
+    <div className="border border-dashed border-gray-400 bg-white p-8 text-center">
+      <h2 className="text-lg">Your cart is empty</h2>
+      <p className="mt-2 text-sm text-gray-600">
+        You have not added any products yet.
       </p>
-
       <Link
         to="/"
-        className="mt-6 inline-block rounded-lg bg-gray-900 px-5 py-3 text-sm font-medium text-white hover:bg-gray-700"
+        className="mt-4 inline-block bg-blue-600 px-4 py-2 text-white"
       >
-        Browse products
+        Back to products
       </Link>
     </div>
   );
-};
+}
 
 export default EmptyCartState;

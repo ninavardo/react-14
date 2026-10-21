@@ -1,11 +1,26 @@
+import CartItem from "../components/CartItem";
 import EmptyCartState from "../components/EmptyCartState";
+import { useCart } from "../context/useCart";
 
 function Cart() {
-  return (
-    <section className="mx-auto max-w-4xl px-6 py-16">
-      <h1 className="text-3xl font-bold text-gray-900">Your cart</h1>
+  const { cart, totalQuantity } = useCart();
 
-      <EmptyCartState />
+  return (
+    <section className="mx-auto max-w-3xl px-4 py-6">
+      <h1 className="mb-1 text-3xl">My Cart</h1>
+      <p className="mb-4 text-sm text-gray-600">
+        {totalQuantity} item{totalQuantity === 1 ? "" : "s"} in the cart
+      </p>
+
+      {cart.length > 0 ? (
+        <div>
+          {cart.map((item) => (
+            <CartItem product={item} key={item.id} />
+          ))}
+        </div>
+      ) : (
+        <EmptyCartState />
+      )}
     </section>
   );
 }
