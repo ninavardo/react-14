@@ -1,8 +1,10 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
 import Header from "./components/Header";
 import { CartProvider } from "./context/CartProvider";
+
+const Home = lazy(() => import("./pages/Home"));
+const Cart = lazy(() => import("./pages/Cart"));
 
 function App() {
   return (
@@ -10,10 +12,12 @@ function App() {
       <Header />
 
       <main className="min-h-screen bg-sky-50">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
+        <Suspense fallback={<p className="p-4">Loading...</p>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </Suspense>
       </main>
     </CartProvider>
   );
