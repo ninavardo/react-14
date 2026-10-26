@@ -1,3 +1,4 @@
+import Message from "../components/Message";
 import ProductsList from "../components/ProductsList";
 
 function Home() {
@@ -21,6 +22,7 @@ function Home() {
         </div>
       </section>
 
+      <Message />
       <ProductsList />
     </div>
   );
